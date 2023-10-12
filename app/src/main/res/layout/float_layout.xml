@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/floatback"
+    android:id="@+id/flayout">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/baseline_open_in_full_24"
+        android:padding="5dp"
+        android:id="@+id/zoom"
+
+        />
+
+
+
+</LinearLayout>

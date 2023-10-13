@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.floating.setOnClickListener {
-
+//
             if (canDrawOverlays) {
                 simpleFloatingWindow.show()
             } else {
@@ -164,13 +164,19 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onStop() {
         super.onStop()
-        unregisterReceiver(wifiStateReceiver)
+
+//        if (canDrawOverlays) {
+//            simpleFloatingWindow.show()
+//        } else {
+//            startManageDrawOverlaysPermission()
+//        }
+//        unregisterReceiver(wifiStateReceiver)
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        SimpleFloatingWindow(applicationContext).show()
+//        SimpleFloatingWindow(applicationContext).show()
     }
 
     private val wifiStateReceiver: BroadcastReceiver = object : BroadcastReceiver() {

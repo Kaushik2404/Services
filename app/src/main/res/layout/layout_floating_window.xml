@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    >
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ff4444"
-        android:padding="32dp"
-        android:text="text"
-        android:textColor="#ffffff"
-        android:textSize="24sp" />
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/closeImageButton"
-        style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="top|right"
-        android:src="@drawable/baseline_clear_24" />
+            android:gravity="center"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="10dp"
+                android:text="text"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnopen"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="open"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/btnstart"
+                android:layout_marginBottom="10dp"
+
+
+                />
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/closeImageButton"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|right"
+            android:src="@drawable/baseline_clear_24" />
+    </LinearLayout>
+
+
+
+
+
+
 
 </FrameLayout>

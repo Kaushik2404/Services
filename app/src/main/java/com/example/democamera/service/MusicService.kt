@@ -1,4 +1,4 @@
-package com.example.democamera
+package com.example.democamera.service
 
 import android.app.Service
 import android.content.Intent

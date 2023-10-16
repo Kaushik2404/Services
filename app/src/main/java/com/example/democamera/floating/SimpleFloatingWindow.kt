@@ -2,6 +2,7 @@ package com.example.democamera.floating
 
 import android.content.Context
 import android.content.Context.WINDOW_SERVICE
+import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
 import android.view.Gravity
@@ -9,10 +10,10 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
+import com.example.democamera.ui.MainActivity
 import com.example.democamera.R
 import java.lang.Math.abs
 
@@ -30,6 +31,7 @@ class SimpleFloatingWindow constructor(private val context: Context) {
     private lateinit var layoutParams: WindowManager.LayoutParams
 
     var textView:AppCompatTextView= floatView.findViewById(R.id.textView)
+    var btnopen:Button= floatView.findViewById(R.id.btnopen)
      var closeImageButton:AppCompatImageButton=floatView.findViewById(R.id.closeImageButton)
 
     private var lastX: Int = 0
@@ -84,9 +86,19 @@ class SimpleFloatingWindow constructor(private val context: Context) {
         with(floatView) {
             closeImageButton.setOnClickListener { dismiss() }
             textView.text = "Helloo.."
+
+            btnopen.setOnClickListener {
+                val intent = Intent ( context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(intent)
+            }
+
         }
 
         floatView.setOnTouchListener(onTouchListener)
+//        floatView.setOnClickListener {
+
+//        }
 
         layoutParams = WindowManager.LayoutParams().apply {
             format = PixelFormat.TRANSLUCENT

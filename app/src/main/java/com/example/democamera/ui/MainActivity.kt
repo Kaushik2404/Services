@@ -1,10 +1,9 @@
-package com.example.democamera
+package com.example.democamera.ui
 
 import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Build
@@ -13,12 +12,12 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.contract.ActivityResultContracts.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.democamera.databinding.ActivityMainBinding
 import com.example.democamera.floating.SimpleFloatingWindow
 import com.example.democamera.floating.canDrawOverlays
 import com.example.democamera.floating.showToast
+import com.example.democamera.service.MusicServic
 
 
 class MainActivity : AppCompatActivity() {
@@ -78,13 +77,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun onclick() {
         binding.start.setOnClickListener{
-            startService(Intent(this@MainActivity,MusicServic::class.java))
+            startService(Intent(this@MainActivity, MusicServic::class.java))
         }
 
         binding.stop.setOnClickListener {
-            stopService(Intent(this@MainActivity,MusicServic::class.java))
+            stopService(Intent(this@MainActivity, MusicServic::class.java))
         }
 
+        binding.roomData.setOnClickListener {
+
+            val intent=Intent(this@MainActivity,RoomDataActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }
         binding.floating.setOnClickListener {
 //
             if (canDrawOverlays) {
@@ -133,30 +139,6 @@ class MainActivity : AppCompatActivity() {
         private const val REQUEST_CODE_DRAW_OVERLAY_PERMISSION = 5
     }
 
-
-//    private fun getPermission() {
-//
-//
-//    if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)){
-//    val intent=Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package$packageName"))
-//        startActivityForResult(intent,1)
-//
-//    }
-
-
-//    }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if(resultCode==1){
-//            if(!Settings.canDrawOverlays(this@MainActivity)){
-//                Toast.makeText(this@MainActivity,"Permission Denied" ,Toast.LENGTH_SHORT).show()
-//
-//            }
-//        }
-//    }
-
     override fun onStart() {
         super.onStart()
 //        val intentFilter = IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION)
@@ -164,12 +146,11 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onStop() {
         super.onStop()
-
-//        if (canDrawOverlays) {
-//            simpleFloatingWindow.show()
-//        } else {
-//            startManageDrawOverlaysPermission()
-//        }
+        if (canDrawOverlays) {
+            simpleFloatingWindow.show()
+        } else {
+            startManageDrawOverlaysPermission()
+        }
 //        unregisterReceiver(wifiStateReceiver)
 
     }

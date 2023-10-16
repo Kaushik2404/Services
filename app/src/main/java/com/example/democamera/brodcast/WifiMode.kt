@@ -1,4 +1,4 @@
-package com.example.democamera
+package com.example.democamera.brodcast
 
 import android.content.BroadcastReceiver
 import android.content.Context
